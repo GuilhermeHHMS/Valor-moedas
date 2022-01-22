@@ -15,3 +15,4 @@ Projeto desenvolvido em Dart.
 #Autor
 
 GuilhermeHHMS
+https://www.linkedin.com/in/guilherme-marcondes-157884214
