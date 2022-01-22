@@ -1,0 +1,1 @@
+[[{"date":"2022-01-21 17:33:55.579962"},{"moeda":"Dollar","preço":5.4518},{"moeda":"Euro","preço":6.183},{"moeda":"Canadian Dollar","preço":4.3372},{"moeda":"Japanese Yen","preço":0.048}],[{"date":"2022-01-21 17:34:15.491302"},{"moeda":"Dollar","preço":5.4569},{"moeda":"Euro","preço":6.1892},{"moeda":"Canadian Dollar","preço":4.3386},{"moeda":"Japanese Yen","preço":0.048}]]
