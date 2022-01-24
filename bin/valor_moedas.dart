@@ -6,6 +6,8 @@ import 'package:http/http.dart' as http;
 void main(){
   menu();
 }
+
+//MENU BÁSICO DE DIRECIONAMENTO.
 menu(){
   print('############################################# Selecione a opção: #############################################\n [1] - Ver a cotação de hoje\n [2] - Resgistrar cotação\n [3] - Ver cotações regstradas');
 
@@ -29,10 +31,13 @@ menu(){
 
   }
 }
+//FUNÇÃO DEFINIDA PARA ADQUIRIR A COTAÇÃO DE HOJE, SOLICITANDO OS DADOS DA API.
 
 today() async {
   var data = await getData();
+
   data.forEach((data){print(data);});
+
   print('\n\nDeseja salvar este arquivo? [S/N]');
   var choose = stdin.readLineSync().toString().toUpperCase();
 
@@ -43,13 +48,14 @@ today() async {
     return null;
   }
 }
-
+//FUNÇÃO DEFINIDA PARA INSERIR OS DADOS SALVOS EM UM DOCUMENTO .TXT.
 writeFile() async {
   var data = await getData();
   dynamic read = readFile();
 
   Directory dir = Directory.current;
   File file = File(dir.path + '/cota.txt');
+//QUANDO NÃO TEM UM DOCUMENTO .TXT NESTE DIRETÓRIO, O CODIGO AUTOMATICAMENTE CRIA UM.
 
   RandomAccessFile raf = file.openSync(mode: FileMode.write);
 
@@ -73,7 +79,7 @@ readFile(){
 
   return file.readAsStringSync();
 }
-
+//ESTA FUNÇÃO EXIBE OS DADOS REGISTRADOS.
 savedFile(){
   dynamic fileText = readFile();
 
@@ -86,7 +92,7 @@ savedFile(){
 }
 
 
-
+//ESTA É A FUNÇÃO RAIZ, QUE ADQUIRE TODOS OS DADOS DA API PELO URL.
 Future getData() async{
 
   String url = 'https://api.hgbrasil.com/finance?key=ebda234c';
