@@ -52,24 +52,23 @@ today() async {
 writeFile() async {
   var data = await getData();
   dynamic read = readFile();
-
   Directory dir = Directory.current;
   File file = File(dir.path + '/cota.txt');
 //QUANDO NÃO TEM UM DOCUMENTO .TXT NESTE DIRETÓRIO, O CODIGO AUTOMATICAMENTE CRIA UM.
 
-  RandomAccessFile raf = file.openSync(mode: FileMode.write);
+  RandomAccessFile raf = file.openSync(mode: FileMode.writeOnly);
 
   if(read.length <= 0){
     raf.writeStringSync(jsonEncode([]));
     return null;
   }
 
-  read = (read != null && read.length >= 0? jsonDecode(read) : 0);
+  read = (read != null && read.length >= 0? jsonDecode(read) : []);
 
 
   read.add(data);
 
-  raf.writeString(jsonEncode([] + read));
+  raf.writeString(jsonEncode(read));
 
 }
 
@@ -82,10 +81,8 @@ readFile(){
 //ESTA FUNÇÃO EXIBE OS DADOS REGISTRADOS.
 savedFile(){
   dynamic fileText = readFile();
-
-  fileText = json.decode(fileText);
-
-  fileText.forEach((file) => print('$fileText \n\n'));
+  fileText = jsonDecode(fileText);
+  fileText.forEach((fileText) => print('$fileText \n\n'));
 
   print('pressione qualquer tecla para continuar...');
   var pause = stdin.readLineSync();
